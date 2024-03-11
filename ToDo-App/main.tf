@@ -32,16 +32,16 @@ module "EKS" {
   source               = "../modules/EKS"
   PROJECT_NAME         = var.PROJECT_NAME
   EKS_CLUSTER_ROLE_ARN = module.IAM.EKS_CLUSTER_ROLE_ARN
-  PUB_SUB1_ID        = module.VPC.PUB_SUB1_ID
-  PUB_SUB2_ID        = module.VPC.PUB_SUB2_ID
-  PRI_SUB3_ID        = module.VPC.PRI_SUB3_ID
-  PRI_SUB4_ID        = module.VPC.PRI_SUB4_ID
+  PUB_SUB1_ID          = module.VPC.PUB_SUB1_ID
+  PUB_SUB2_ID          = module.VPC.PUB_SUB2_ID
+  PRI_SUB3_ID          = module.VPC.PRI_SUB3_ID
+  PRI_SUB4_ID          = module.VPC.PRI_SUB4_ID
 }
 
 # create Node Group
 module "NodeGroup" {
   source               = "../modules/NodeGroup"
-  NODE_GROUP_ARN  = module.IAM.NODE_GROUP_ROLE_ARN
+  NODE_GROUP_ARN       = module.IAM.NODE_GROUP_ROLE_ARN
   PRI_SUB3_ID          = module.VPC.PRI_SUB3_ID
   PRI_SUB4_ID          = module.VPC.PRI_SUB4_ID
   EKS_CLUSTER_NAME     = module.EKS.EKS_CLUSTER_NAME
